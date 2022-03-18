@@ -1,0 +1,13 @@
+body{
+    background-image: url('./image.jpg');
+    background-size: cover;
+    background-attachment:fixed;
+    height: 100vh;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.text{
+    height: 100%;
+}
