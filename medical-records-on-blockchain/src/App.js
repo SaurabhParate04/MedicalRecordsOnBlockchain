@@ -6,10 +6,10 @@ import Login from './Pages/Login';
 function App() {
   return (
     <div>
-      <Home/>
+      {/* <Home/> */}
       <Login/>
     </div>
   );
 }
 
-export default App;
+export default App; 
