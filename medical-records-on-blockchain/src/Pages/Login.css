@@ -52,8 +52,10 @@ body {
 
 .login-container button {
 	border-radius: 20px;
-	border: 1px solid #FF4B2B;
-	background-color: #FF4B2B;
+	/* border: 1px solid #FF4B2B; */
+	border: 1px solid #854dff;
+	/* background-color: #FF4B2B; */
+	background-color: #854dff;
 	color: #FFFFFF;
 	font-size: 12px;
 	font-weight: bold;
@@ -67,12 +69,18 @@ body {
 	transform: scale(0.95);
 }
 
+.login-container button:hover {
+	background-color: white;
+	color: #854dff;
+}
+
 .login-container button:focus {
 	outline: none;
 }
 
-.login-container button.ghost {
-	background-color: transparent;
+.login-container button.ghost:hover {
+	/* background-color: transparent; */
+	background-color: white;
 	border-color: #FFFFFF;
 }
 
@@ -90,11 +98,15 @@ body {
 .login-container .input-box {
 	background-color: #eee;
 	border: none;
-	border-radius: 8px;
 	padding: 12px 15px;
 	margin: 8px 0;
 	height: 40px;
 	/* width: 100%; */
+}
+
+.login-container .input-box:focus{
+	border: 2px solid #250869;
+	outline: #250869;
 }
 
 .login-container .sign-in-input {
@@ -164,9 +176,12 @@ body {
 }
 
 .overlay {
-	background: #FF416C;
-	background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);
-	background: linear-gradient(to right, #FF4B2B, #FF416C);
+	/* background: #FF416C; */
+	background: #071651;
+	/* background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);
+	background: linear-gradient(to right, #FF4B2B, #FF416C); */
+	background: -webkit-linear-gradient(to right, #071651, #5733aa);
+	background: linear-gradient(to right, #074651, #5733aa);
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: 0 0;
@@ -261,4 +276,9 @@ body {
 }
 .social-menu ul li:nth-child(3) a:hover {
     background-color: #0077B5;
+}
+
+.radio-check:checked {
+    background-color: #5733aa;
+    border-color: pink;
 }

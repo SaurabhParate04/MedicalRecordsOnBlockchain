@@ -47,7 +47,7 @@ export default function Login() {
                                 <div className='my-2 d-flex flex-row'>
                                     <label className="ms-1 form-check-label" htmlFor="radiobutton">Are you a Doctor ?</label>
                                     <div className="ms-4 form-check form-switch">
-                                        <input className="form-check-input" type="checkbox" role="switch" id="radiobutton" required/>
+                                        <input className="radio-check form-check-input" type="checkbox" role="switch" id="radiobutton" required/>
                                     </div>
                                 </div>
                             </div>
