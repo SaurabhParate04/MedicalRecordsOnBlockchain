@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Login.css';
-import { useEffect } from 'react';
+import { useEffect} from 'react';
 //config of firebase app
-import firebaseConfig from '../../firebase.config';
+import firebaseConfig from '../firebase.config';
 import {initializeApp} from 'firebase/app'
-import {getAuth,onAuthStateChanged} from 'firebase/auth'
+import {getAuth,onAuthStateChanged,createUserWithEmailAndPassword, signOut} from 'firebase/auth'
 
 //for google authentication
 import { GoogleAuthProvider } from 'firebase/auth';
@@ -16,28 +16,23 @@ const app  = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
 
-// auth setup
+    // AUTH SETUP
+    // callled on login or logout
+    onAuthStateChanged(auth,(user)=>{
+        //if user exists
+        if(user)
+        {
+            //user exists -- signed in 
+            //console.log('user signed IN');
+            console.log(user);
+        }
+        else{
+            //it doesnt --signed out
+            console.log('user not founds');
+        }
 
-// callled on login or logout
-onAuthStateChanged(auth,(user)=>{
-    //if user exists
-    if(user)
-    {
-        //user exists -- signed in 
-        console.log(user);
-    }
-    else{
-        //it doesnt --signed out
-    }
+    })
 
-})
-
-
-//authentication using google
-
-const signInWithGoogle = ()=>{
-    
-}
 
 
 
@@ -56,16 +51,63 @@ export default function Login() {
     //     container.classList.remove("right-panel-active");
     // });
 
+    //STATE INIT
+    const [loginCred, setloginCred] = useState({email:"",password:""});
+     const [signupCred, setsignupCred] = useState({email:"", password:""})
+
     useEffect(() => {
         container = document.querySelector('#container');
     }, [])
 
 
+
+
+
+
+
     const handleClick = (e) => {
         console.log("Hi");
-        console.log(container.innerHTML)
+        //console.log(container.innerHTML)
         container.classList.toggle('right-panel-active');
     }
+
+    const handleSignupOnChange  = (e) =>{
+        //console.log('form changed')
+        setsignupCred({...signupCred,[e.target.name]:e.target.value})
+        //console.log(signupCred);
+    }
+
+    const handleSignupOnSubmit = (e)=>{
+        e.preventDefault();
+        console.log('form submitted')
+
+        //signup using email and password
+        createUserWithEmailAndPassword(auth, signupCred.email, signupCred.password)
+        .then((userCredential) => {
+            // Signed in 
+            const user = userCredential.user;
+            // ...
+        })
+        .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            console.log(errorCode,errorMessage);
+        });
+
+        //store user data in firestore
+
+
+    }
+
+    const handleLogout = ()=>{
+        signOut(auth).then(() => {
+            // Sign-out successful.
+          }).catch((error) => {
+            // An error occured.
+          });
+    }
+
+
 
     return (
         <div>
@@ -73,22 +115,22 @@ export default function Login() {
 
                 {/* signup container */}
                 <div className="form-container sign-up-container">
-                    <form action="#" >
+                    <form action="#" onChange={handleSignupOnChange} onSubmit={handleSignupOnSubmit} >
                         <h1 className='my-2'>Create Account</h1>
                         <div className='container'>
                             <div className='row'>
-                                <div className='col-6'><input className='input-box col-12' type="text" placeholder="First Name" required /></div>
-                                <div className='col-6'><input className='input-box col-12' type="text" placeholder="Last Name" required /></div>
-                                <div className='col-6'><input className='input-box col-12' type="number" placeholder="age" required /></div>
-                                <div className='col-6'><input className='input-box col-12' type="number" placeholder="Phone No" required /></div>
-                                <div><input className='input-box col-12' type="email" placeholder="Email" required /></div>
-                                <div><input className='input-box col-12' type="password" placeholder="Password" required /></div>
-                                <div><input className='input-box col-12' type="text" placeholder="Public Key" required /></div>
+                                <div className='col-6'><input className='input-box col-12' type="text" name='firstname' placeholder="First Name"  /></div>
+                                <div className='col-6'><input className='input-box col-12' type="text" name='lastname' placeholder="Last Name"  /></div>
+                                <div className='col-6'><input className='input-box col-12' type="number" name='age' placeholder="age"  /></div>
+                                <div className='col-6'><input className='input-box col-12' type="number" name='phno' placeholder="Phone No"  /></div>
+                                <div><input className='input-box col-12' type="email" placeholder="Email" name='email'  /></div>
+                                <div><input className='input-box col-12' type="password" placeholder="Password" name='password'  /></div>
+                                <div><input className='input-box col-12' type="text" placeholder="Public Key" name='publicKey'  /></div>
 
                                 <div className='my-2 d-flex flex-row'>
                                     <label className="ms-1 form-check-label" htmlFor="radiobutton">Are you a Doctor ?</label>
                                     <div className="ms-4 form-check form-switch">
-                                        <input className="form-check-input" type="checkbox" role="switch" id="radiobutton" required/>
+                                        <input className="form-check-input" type="checkbox" role="switch" id="radiobutton" />
                                     </div>
                                 </div>
                             </div>
