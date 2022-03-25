@@ -59,7 +59,7 @@ export default function Login() {
     useEffect(() => {
         container = document.querySelector('#container');
     }, [])
-    
+
 
     const handleClick = (e) => {
         console.log("Hi");
@@ -69,41 +69,63 @@ export default function Login() {
 
     return (
         <div>
-            <div className="login-container my-5" id="container">
+            <div className="login-container" id="container">
+
+                {/* signup container */}
                 <div className="form-container sign-up-container">
                     <form action="#" >
-                        <h1>Create Account</h1>
-                        <input type="text" placeholder="Name" />
-                        <input type="email" placeholder="Email" />
-                        <input type="password" placeholder="Password" />
-                        {/* <div className="social-menu">
-                            <ul>
-                                <li><a href="/"><i className="fa fa-facebook"></i></a></li>
-                                <li><a href="/"><i className="fa fa-instagram"></i></a></li>
-                                <li><a href="/"><i className="fa fa-linkedin"></i></a></li>
-                            </ul>
-                        </div> */}
+                        <h1 className='my-2'>Create Account</h1>
+                        <div className='container'>
+                            <div className='row'>
+                                <div className='col-6'><input className='input-box col-12' type="text" placeholder="First Name" required /></div>
+                                <div className='col-6'><input className='input-box col-12' type="text" placeholder="Last Name" required /></div>
+                                <div className='col-6'><input className='input-box col-12' type="number" placeholder="age" required /></div>
+                                <div className='col-6'><input className='input-box col-12' type="number" placeholder="Phone No" required /></div>
+                                <div><input className='input-box col-12' type="email" placeholder="Email" required /></div>
+                                <div><input className='input-box col-12' type="password" placeholder="Password" required /></div>
+                                <div><input className='input-box col-12' type="text" placeholder="Public Key" required /></div>
+
+                                <div className='my-2 d-flex flex-row'>
+                                    <label className="ms-1 form-check-label" htmlFor="radiobutton">Are you a Doctor ?</label>
+                                    <div className="ms-4 form-check form-switch">
+                                        <input className="form-check-input" type="checkbox" role="switch" id="radiobutton" required/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <button>Sign Up</button>
-                        <span>or use your email for registration</span>
-                    </form>
-                </div>
-                <div className="form-container sign-in-container">
-                    <form action="#" >
-                        <h1>Sign in</h1>
-                        <input type="email" placeholder="Email" />
-                        <input type="password" placeholder="Password" />
-                        <a href="/">Forgot your password?</a>
-                        <button >Sign In</button>
-                        <span>or use your account</span>
-                        <div className='social-menu'>
-                            <ul>
+                        <span className='my-1'>or create account using</span>
+                        <div className="social-menu">
+                            <ul className='sign-up-ul'>
+                                <li><a href="/"><i className="fa fa-google"></i></a></li>
                                 <li><a href="/"><i className="fa fa-facebook"></i></a></li>
-                                <li><a href="/"><i className="fa fa-instagram"></i></a></li>
                                 <li><a href="/"><i className="fa fa-linkedin"></i></a></li>
                             </ul>
                         </div>
                     </form>
                 </div>
+
+                {/* sign in Container */}
+                <div className="form-container  sign-in-container">
+                    <form action="#" >
+                        <h1>Sign in</h1>
+                        <input className='input-box sign-in-input' type="email" placeholder="Email" />
+                        <input className='input-box sign-in-input' type="password" placeholder="Password" />
+                        <a href="/">Forgot your password?</a>
+                        <button >Sign In</button>
+                        <span className='mt-1'>or use your account</span>
+                        <div className='social-menu mt-2'>
+                            <ul>
+                                <li><a href="/"><i className="fa fa-google"></i></a></li>
+                                <li><a href="/"><i className="fa fa-facebook"></i></a></li>
+                                <li><a href="/"><i className="fa fa-linkedin"></i></a></li>
+                            </ul>
+                        </div>
+                    </form>
+                </div>
+
+                {/* Ovelay container */}
                 <div className="overlay-container ">
                     <div className="overlay">
                         <div className="overlay-panel overlay-left">
