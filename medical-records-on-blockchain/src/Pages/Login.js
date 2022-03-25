@@ -1,6 +1,47 @@
 import React from 'react'
 import './Login.css';
 import { useEffect } from 'react';
+//config of firebase app
+import firebaseConfig from '../../firebase.config';
+import {initializeApp} from 'firebase/app'
+import {getAuth,onAuthStateChanged} from 'firebase/auth'
+
+//for google authentication
+import { GoogleAuthProvider } from 'firebase/auth';
+const googleProvider = new  GoogleAuthProvider();
+
+
+//firebase initialization
+const app  = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+
+// auth setup
+
+// callled on login or logout
+onAuthStateChanged(auth,(user)=>{
+    //if user exists
+    if(user)
+    {
+        //user exists -- signed in 
+        console.log(user);
+    }
+    else{
+        //it doesnt --signed out
+    }
+
+})
+
+
+//authentication using google
+
+const signInWithGoogle = ()=>{
+    
+}
+
+
+
+
 
 export default function Login() {
     // const signUpButton = document.querySelector('#signUp');
