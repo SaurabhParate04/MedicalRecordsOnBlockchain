@@ -1,0 +1,30 @@
+.navbar-container{
+    background-color: #2a3765;
+    height: 70px;
+}
+
+.nav-link:hover{
+    color: #fff !important;
+    text-decoration: none;
+}
+
+.nav-link:active{
+    transform: scale(0.94);
+}
+
+#auth-btn{
+    border: none;
+    background-color: #5a33e9;
+    color: #fff;
+    border-radius: 2px;
+    margin: 0 0.5em;
+}
+
+#auth-btn:hover{
+    background-color: white;
+    color: #854dff;
+}
+
+#auth-btn:active {
+	transform: scale(0.95);
+}
