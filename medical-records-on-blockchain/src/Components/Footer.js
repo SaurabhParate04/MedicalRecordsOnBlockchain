@@ -19,22 +19,22 @@ export default function Footer() {
             <hr className="my-5 text-white m-auto" style={{width:"90%"}} />
 
             <section className="text-center pb-5">
-                <a href="" className="text-white me-4">
+                <a href="/" className="text-white me-4">
                     <i className="fab fa-facebook-f"></i>
                 </a>
-                <a href="" className="text-white me-4">
+                <a href="/" className="text-white me-4">
                     <i className="fab fa-twitter"></i>
                 </a>
-                <a href="" className="text-white me-4">
+                <a href="/" className="text-white me-4">
                     <i className="fab fa-google"></i>
                 </a>
-                <a href="" className="text-white me-4">
+                <a href="/" className="text-white me-4">
                     <i className="fab fa-instagram"></i>
                 </a>
-                <a href="" className="text-white me-4">
+                <a href="/" className="text-white me-4">
                     <i className="fab fa-linkedin"></i>
                 </a>
-                <a href="" className="text-white me-4">
+                <a href="/" className="text-white me-4">
                     <i className="fab fa-github"></i>
                 </a>
             </section>

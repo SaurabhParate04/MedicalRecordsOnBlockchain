@@ -1,4 +1,5 @@
 import React from 'react'
+import Features from '../Components/Features';
 import Footer from '../Components/Footer';
 import Navbar from '../Components/Navbar';
 // import './Home.css';
@@ -8,7 +9,9 @@ export default function Home() {
   return (
     <div>
       <Navbar/>
-      
+
+      <Features/>
+
       <Footer/>
     </div>
   )

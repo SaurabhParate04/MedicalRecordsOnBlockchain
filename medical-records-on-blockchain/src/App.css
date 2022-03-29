@@ -30,6 +30,16 @@
 	transform: scale(0.95);
 }
 
+.feature-item{
+    max-width: 21rem;
+}
+
+.feature-title{
+    text-align: center;
+    color: #854dff;
+    /* font-weight: 550; */
+}
+
 .footer-container{
     background-color: #061551;
 }
