@@ -2,11 +2,37 @@ import React from 'react';
 import './App.css';
 import Home from './Pages/Home';
 import Login from './Pages/Login';
+import Records from './Pages/Records';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
 
 function App() {
   return (
     <div>
-      <Home/>
+      <Router >
+        <Switch>
+
+          <Route exact path="/">
+            <Home/>
+          </Route>
+
+          <Route exact path="/records">
+            <Records/>
+          </Route>
+
+          <Route exact path="/login">
+            <Login/>
+          </Route>
+
+          <Route exact path="/signup">
+            <Login/>
+          </Route>
+          
+        </Switch>
+      </Router>
     </div>
   );
 }
