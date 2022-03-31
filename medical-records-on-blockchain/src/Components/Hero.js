@@ -5,7 +5,7 @@ import Hero2 from "./icons/Hero2.jpg"
 export default function Hero() {
     return (
         <div className='hero-wrapper'>
-            <h1 className='hero-title'>How it works</h1>
+            <h1 className='pt-5 hero-title'>How it works</h1>
             <div className="hero-container container px-4">
                 <div className="row flex-lg-row align-items-center g-5 py-5">
                     <div className="col-10 col-sm-8 col-lg-6">
