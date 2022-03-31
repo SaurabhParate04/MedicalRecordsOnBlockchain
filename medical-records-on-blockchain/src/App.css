@@ -31,6 +31,55 @@
 	transform: scale(0.95);
 }
 
+/* Cover Component Style */
+
+.cover-outer{
+    height: 150vh;
+    width: 100%;
+    margin: auto;
+    padding-top: 130px;
+    text-align: center;
+    /* display: flex;
+    align-items: center; */
+    color: #fff;
+    /* background:linear-gradient(0deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('Components/icons/backImage.jpg'); */
+    background:linear-gradient(0deg, rgba(7, 1, 32, 0.8), rgba(7, 1, 32, 0.8)), url('Components/icons/backImage.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.cover-inner{
+    width: 60%;
+    margin: auto;
+}
+
+.cover-title{
+    font-size: 50px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 600;
+}
+
+.cover-subtitle{
+    font-size: 18px;
+}
+
+.cover-btn{
+    text-align: center;
+    font-weight: 600;
+    width: 30%;
+    border-radius: 40px;
+    background-color: #5a33e9;
+    color: #fff;
+}
+
+.cover-btn:hover{
+    background-color: #fff;
+    color: #854dff;
+}
+
+.cover-btn:active {
+	transform: scale(0.95);
+}
 
 /* Feature Component style */
 
