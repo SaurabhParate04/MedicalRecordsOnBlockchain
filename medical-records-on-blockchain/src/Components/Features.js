@@ -5,7 +5,7 @@ import FeatureIcon3 from "./icons/FeatureIcon3.PNG"
 
 export default function Features() {
     return (
-        <div>
+        <div className='feat'>
             <div className="container-fluid px-4 py-5" id="featured-3">
                 <div className="row g-4 py-5 ">
                     <div className="feature col-4 m-auto feature-item">

@@ -32,15 +32,21 @@
 }
 
 /* Cover Component Style */
+.parent{
+    position: relative;
+    width: 100vw;
+    height: 150vh;
+}
 
 .cover-outer{
-    height: 150vh;
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    height: 100%;
     width: 100%;
     margin: auto;
     padding-top: 130px;
     text-align: center;
-    /* display: flex;
-    align-items: center; */
     color: #fff;
     /* background:linear-gradient(0deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('Components/icons/backImage.jpg'); */
     background:linear-gradient(0deg, rgba(7, 1, 32, 0.8), rgba(7, 1, 32, 0.8)), url('Components/icons/backImage.jpg');
@@ -81,7 +87,38 @@
 	transform: scale(0.95);
 }
 
+/* Carousel Component Style */
+.carousel{
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    width: 60%;
+    height: 60%;
+    margin-left: 272px;
+    margin-top: 550px;
+}
+
+.carousel-inner{
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    border-radius: 10px;
+}
+
+.c-btn-l{
+    margin-top: 700px;
+    margin-left: 100px;
+}
+
+.c-btn-r{
+    margin-top: 700px;
+    margin-right: 100px;
+}
+
 /* Feature Component style */
+.feat{
+    margin-top: 200px;
+}
 
 .feature-item{
     max-width: 21rem;
@@ -99,7 +136,6 @@
 
 
 /* Footer Component style */
-
 .footer-container{
     background-color: #061551;
 }
