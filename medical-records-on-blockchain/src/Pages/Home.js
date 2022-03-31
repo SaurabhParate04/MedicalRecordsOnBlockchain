@@ -2,6 +2,7 @@ import React from 'react'
 import Cover from '../Components/Cover';
 import Features from '../Components/Features';
 import Footer from '../Components/Footer';
+import Hero from '../Components/Hero';
 import Navbar from '../Components/Navbar';
 // import './Home.css';
 // import image from "./image.jpg";
@@ -14,6 +15,8 @@ export default function Home() {
       <Cover/>
 
       <Features/>
+
+      <Hero/>
 
       <Footer/>
     </div>

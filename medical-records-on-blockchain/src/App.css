@@ -134,6 +134,34 @@
     text-align: justify;
 }
 
+/* Hero Component Style */
+.hero-wrapper{
+    background-color: rgb(214, 234, 252);
+}
+
+.hero-container{
+    width: 60%;
+}
+
+.hero-title{
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 700;
+}
+
+.hero-subtitle{
+    font-weight: 500;
+}
+
+.hero-img{
+    width: 492px;
+    height: 317px;
+}
+
+.hero-text{
+    font-size: medium;
+}
+
 
 /* Footer Component style */
 .footer-container{
