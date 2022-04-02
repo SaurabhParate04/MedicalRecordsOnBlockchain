@@ -5,7 +5,7 @@ body {
 	background: #f6f5f7;
 	display: flex;
 	justify-content: center;
-	align-items: center;
+	/* align-items: center; */
 	flex-direction: column;
 }
 
@@ -182,9 +182,9 @@ body {
 
 .overlay {
 	/* background: #FF416C; */
-	background: #071651;
 	/* background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);
 	background: linear-gradient(to right, #FF4B2B, #FF416C); */
+	background: #071651;
 	background: -webkit-linear-gradient(to right, #071651, #5733aa);
 	background: linear-gradient(to right, #074651, #5733aa);
 	background-repeat: no-repeat;
