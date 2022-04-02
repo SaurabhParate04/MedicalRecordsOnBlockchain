@@ -119,13 +119,13 @@ export default function Login() {
                         <h1 className='my-2'>Create Account</h1>
                         <div className='container'>
                             <div className='row'>
-                                <div className='col-6'><input className='input-box col-12' type="text" name='firstname' placeholder="First Name"  /></div>
-                                <div className='col-6'><input className='input-box col-12' type="text" name='lastname' placeholder="Last Name"  /></div>
-                                <div className='col-6'><input className='input-box col-12' type="number" name='age' placeholder="age"  /></div>
-                                <div className='col-6'><input className='input-box col-12' type="number" name='phno' placeholder="Phone No"  /></div>
-                                <div><input className='input-box col-12' type="email" placeholder="Email" name='email'  /></div>
-                                <div><input className='input-box col-12' type="password" placeholder="Password" name='password'  /></div>
-                                <div><input className='input-box col-12' type="text" placeholder="Public Key" name='publicKey'  /></div>
+                                <div className='col-6'><input className='input-box col-12' type="text" name='firstname' placeholder="First Name" required /></div>
+                                <div className='col-6'><input className='input-box col-12' type="text" name='lastname' placeholder="Last Name" required /></div>
+                                <div className='col-6'><input className='input-box col-12' type="number" name='age' placeholder="age" required /></div>
+                                <div className='col-6'><input className='input-box col-12' type="number" name='phno' placeholder="Phone No" required /></div>
+                                <div><input className='input-box col-12' type="email" placeholder="Email" name='email' required /></div>
+                                <div><input className='input-box col-12' type="password" placeholder="Password" name='password' required /></div>
+                                <div><input className='input-box col-12' type="text" placeholder="Public Key" name='publicKey' required /></div>
 
                                 <div className='my-2 d-flex flex-row'>
                                     <label className="ms-1 form-check-label" htmlFor="radiobutton">Are you a Doctor ?</label>
@@ -152,8 +152,8 @@ export default function Login() {
                 <div className="form-container  sign-in-container">
                     <form action="#" >
                         <h1>Sign in</h1>
-                        <input className='input-box sign-in-input' type="email" placeholder="Email" />
-                        <input className='input-box sign-in-input' type="password" placeholder="Password" />
+                        <input className='input-box sign-in-input' type="email" placeholder="Email" required />
+                        <input className='input-box sign-in-input' type="password" placeholder="Password" required />
                         <a href="/">Forgot your password?</a>
                         <button >Sign In</button>
                         <span className='mt-1'>or use your account</span>
