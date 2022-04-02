@@ -7,8 +7,9 @@ import {initializeApp} from 'firebase/app'
 import {getAuth,onAuthStateChanged,createUserWithEmailAndPassword, signOut} from 'firebase/auth'
 
 //for google authentication
-import { GoogleAuthProvider } from 'firebase/auth';
+import { GoogleAuthProvider, FacebookAuthProvider,signInWithPopup } from 'firebase/auth';
 const googleProvider = new  GoogleAuthProvider();
+const facebookProvider = new FacebookAuthProvider();
 
 
 //firebase initialization
@@ -107,6 +108,61 @@ export default function Login() {
           });
     }
 
+    const handleOnClickGoogleSignUp = (e) =>{
+
+        e.preventDefault();
+
+        signInWithPopup(auth, googleProvider)
+        .then((result) => {
+            // This gives you a Google Access Token. You can use it to access the Google API.
+            const credential = GoogleAuthProvider.credentialFromResult(result);
+            const token = credential.accessToken;
+            // The signed-in user info.
+            const user = result.user;
+            // ...
+        }).catch((error) => {
+            // Handle Errors here.
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            // The email of the user's account used.
+            const email = error.email;
+            // The AuthCredential type that was used.
+            const credential = GoogleAuthProvider.credentialFromError(error);
+            // ...
+        });
+
+        //store user data in firestore
+    }
+
+    const handleOnClickFacebookSignUp = (e)=>{
+        e.preventDefault();
+
+
+        signInWithPopup(auth, facebookProvider)
+        .then((result) => {
+            // The signed-in user info.
+            const user = result.user;
+
+            // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+            const credential = FacebookAuthProvider.credentialFromResult(result);
+            const accessToken = credential.accessToken;
+
+            // ...
+        })
+        .catch((error) => {
+            // Handle Errors here.
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            // The email of the user's account used.
+            const email = error.email;
+            // The AuthCredential type that was used.
+            const credential = FacebookAuthProvider.credentialFromError(error);
+
+            // ...
+        });
+
+    }
+
 
 
     return (
@@ -115,6 +171,7 @@ export default function Login() {
 
                 {/* signup container */}
                 <div className="form-container sign-up-container">
+                    <button onClick={handleLogout} >logout</button>
                     <form action="#" onChange={handleSignupOnChange} onSubmit={handleSignupOnSubmit} >
                         <h1 className='my-2'>Create Account</h1>
                         <div className='container'>
@@ -140,8 +197,8 @@ export default function Login() {
                         <span className='my-1'>or create account using</span>
                         <div className="social-menu">
                             <ul className='sign-up-ul'>
-                                <li><a href="/"><i className="fa fa-google"></i></a></li>
-                                <li><a href="/"><i className="fa fa-facebook"></i></a></li>
+                                <li><a href="/" onClick={handleOnClickGoogleSignUp}><i className="fa fa-google"></i></a></li>
+                                <li><a href="/" onClick={handleOnClickFacebookSignUp} ><i className="fa fa-facebook"></i></a></li>
                                 <li><a href="/"><i className="fa fa-linkedin"></i></a></li>
                             </ul>
                         </div>
