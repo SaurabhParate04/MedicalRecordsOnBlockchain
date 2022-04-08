@@ -6,17 +6,19 @@ import carousel3 from "./icons/carousel3.jpg"
 export default function Cover() {
     return (
         <div className='parent'>
+
+            {/* Cover */}
             <div className="cover-outer">
                 <div className="cover-inner p-3">
                     <div className="px-3">
                         <h1 className='cover-title'>The smartest way to manage your medical records</h1>
                         <p className="cover-subtitle">I'm a title. Click here to add your own text and edit me.</p>
-                        <p>
-                            <a href="/" className="cover-btn btn btn-lg">Learn more</a>
-                        </p>
+                        <p> <a href="/" className="cover-btn btn btn-lg">Learn more</a> </p>
                     </div>
                 </div>
             </div>
+
+            {/* Carousel */}
             <div className="carousel slide" data-bs-ride="carousel">
                 <div className="carousel-inner">
                     <div className="carousel-item active">
@@ -30,6 +32,8 @@ export default function Cover() {
                     </div>
                 </div>
             </div>
+
+            {/* Prev & Next Buttons */}
             <button className="c-btn-l carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
                 <span className="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span className="visually-hidden">Previous</span>
