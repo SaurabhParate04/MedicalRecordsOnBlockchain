@@ -171,7 +171,7 @@ export default function Login() {
 
                 {/* signup container */}
                 <div className="form-container sign-up-container">
-                    <button onClick={handleLogout} >logout</button>
+                    {/* <button onClick={handleLogout} >logout</button> */}
                     <form action="#" onChange={handleSignupOnChange} onSubmit={handleSignupOnSubmit} >
                         <h1 className='my-2'>Create Account</h1>
                         <div className='container'>
