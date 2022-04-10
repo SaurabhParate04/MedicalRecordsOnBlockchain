@@ -1,3 +1,7 @@
+body {
+    overflow-x: hidden;
+}
+
 /* Navbar Component Style */
 .navbar-container{
     background-color: #061551;
