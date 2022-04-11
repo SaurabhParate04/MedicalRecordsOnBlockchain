@@ -1,13 +1,16 @@
 import React, { useState } from 'react'
 import './Login.css';
+//hooks
 import { useEffect} from 'react';
+import { useHistory } from 'react-router-dom';
 //config of firebase app
 import firebaseConfig from '../firebase.config';
 import {initializeApp} from 'firebase/app'
-import {getAuth,onAuthStateChanged,createUserWithEmailAndPassword, signOut} from 'firebase/auth'
+import {getAuth,onAuthStateChanged,createUserWithEmailAndPassword, signOut} from 'firebase/auth';
+import { getFirestore, doc, setDoc } from "firebase/firestore";
 
 //for google authentication
-import { GoogleAuthProvider, FacebookAuthProvider,signInWithPopup } from 'firebase/auth';
+import { GoogleAuthProvider, FacebookAuthProvider,signInWithPopup,sendEmailVerification } from 'firebase/auth';
 const googleProvider = new  GoogleAuthProvider();
 const facebookProvider = new FacebookAuthProvider();
 
@@ -15,6 +18,7 @@ const facebookProvider = new FacebookAuthProvider();
 //firebase initialization
 const app  = initializeApp(firebaseConfig);
 const auth = getAuth(app);
+const db = getFirestore(app);
 
 
     // AUTH SETUP
@@ -29,7 +33,7 @@ const auth = getAuth(app);
         }
         else{
             //it doesnt --signed out
-            console.log('user not founds');
+            console.log('user not found');
         }
 
     })
@@ -40,34 +44,20 @@ const auth = getAuth(app);
 
 
 export default function Login() {
-    // const signUpButton = document.querySelector('#signUp');
-    // const signInButton = document.getElementById('signIn');
+
     let container = null
-
-    // signUpButton.addEventListener('click', () => {
-    //     container.classList.add("right-panel-active");
-    // });
-
-    // signInButton.addEventListener('click', () => {
-    //     container.classList.remove("right-panel-active");
-    // });
-
     //STATE INIT
     const [loginCred, setloginCred] = useState({email:"",password:""});
-     const [signupCred, setsignupCred] = useState({email:"", password:""})
+     const [signupCred, setsignupCred] = useState({email:"", password:"", firstName:"", lastName:"", phNo:"",age:"", isDoc:false, publicKey:-1});
 
     useEffect(() => {
         container = document.querySelector('#container');
     }, [])
 
-
-
-
-
-
+    const history = useHistory();
 
     const handleClick = (e) => {
-        console.log("Hi");
+        //console.log("Hi");
         //console.log(container.innerHTML)
         container.classList.toggle('right-panel-active');
     }
@@ -78,16 +68,45 @@ export default function Login() {
         //console.log(signupCred);
     }
 
+
+    const storeUserInfo = async() =>{
+        try {
+            const {firstName, lastName, age, email, isDoc, publicKey, phNo } = signupCred;
+            await setDoc(doc(db, "users", `${email}`), {
+                first: firstName,
+              last: lastName,
+              age: age,
+              email:email,
+              phoneNumber:phNo,
+              isDoc,
+              publicKey,
+              });
+            history.push('/')
+            
+          } catch (e) {
+            console.error("Error adding document: ", e);
+          }
+    }
+
+
+    //handle submit button on submit action
     const handleSignupOnSubmit = (e)=>{
         e.preventDefault();
-        console.log('form submitted')
+        console.log('signup clicked');
+
 
         //signup using email and password
         createUserWithEmailAndPassword(auth, signupCred.email, signupCred.password)
         .then((userCredential) => {
             // Signed in 
             const user = userCredential.user;
-            // ...
+            //store user data in firestore
+            try {
+                storeUserInfo(user);
+            } catch (err) {
+                console.log(err.message);
+            }
+
         })
         .catch((error) => {
             const errorCode = error.code;
@@ -95,7 +114,12 @@ export default function Login() {
             console.log(errorCode,errorMessage);
         });
 
-        //store user data in firestore
+
+        //sendEmailVerification(auth.currentUser)
+        //.then(() => {
+        //    console.log('verification email sent !!');
+        //});
+
 
 
     }
@@ -176,10 +200,10 @@ export default function Login() {
                         <h1 className='my-2'>Create Account</h1>
                         <div className='container'>
                             <div className='row'>
-                                <div className='col-6'><input className='input-box col-12' type="text" name='firstname' placeholder="First Name" required /></div>
-                                <div className='col-6'><input className='input-box col-12' type="text" name='lastname' placeholder="Last Name" required /></div>
+                                <div className='col-6'><input className='input-box col-12' type="text" name='firstName' placeholder="First Name" required /></div>
+                                <div className='col-6'><input className='input-box col-12' type="text" name='lastName' placeholder="Last Name" required /></div>
                                 <div className='col-6'><input className='input-box col-12' type="number" name='age' placeholder="age" required /></div>
-                                <div className='col-6'><input className='input-box col-12' type="number" name='phno' placeholder="Phone No" required /></div>
+                                <div className='col-6'><input className='input-box col-12' type="number" name='phNo' placeholder="Phone No" required /></div>
                                 <div><input className='input-box col-12' type="email" placeholder="Email" name='email' required /></div>
                                 <div><input className='input-box col-12' type="password" placeholder="Password" name='password' required /></div>
                                 <div><input className='input-box col-12' type="text" placeholder="Public Key" name='publicKey' required /></div>
@@ -192,7 +216,7 @@ export default function Login() {
                                 </div>
                             </div>
                         </div>
-
+                        {/* signup button */}
                         <button>Sign Up</button>
                         <span className='my-1'>or create account using</span>
                         <div className="social-menu">
