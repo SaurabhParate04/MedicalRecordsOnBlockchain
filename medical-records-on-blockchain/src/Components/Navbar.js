@@ -12,18 +12,31 @@ export default function Navbar() {
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+
               <li className="nav-item">
                 <Link className="nav-link mx-3 active" aria-current="page" to="/">Home</Link>
               </li>
+
               <li className="nav-item">
                 <Link className="nav-link mx-3" to="/records">Records</Link>
               </li>
+
               <li className="nav-item">
                 <Link className="nav-link mx-3" to="/login">Login</Link>
               </li>
+
               <li className="nav-item">
                 <Link className="auth-btn btn mx-3" to="/signup">Signup</Link>
               </li>
+
+              <li className="nav-item">
+                <Link className="nav-link mx-3" to="/login">Login</Link>
+              </li>
+              
+              <li className="nav-item">
+                <Link className="auth-btn btn mx-3" to="/signup">Signup</Link>
+              </li>
+
             </ul>
           </div>
         </div>
