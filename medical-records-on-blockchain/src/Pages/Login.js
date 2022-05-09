@@ -28,7 +28,7 @@ const db = getFirestore(app);
         if(user)
         {
             //user exists -- signed in 
-            //console.log('user signed IN');
+            console.log('user signed IN');
             console.log(user);
         }
         else{

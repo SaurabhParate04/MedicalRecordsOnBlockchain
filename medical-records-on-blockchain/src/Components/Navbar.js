@@ -1,7 +1,21 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { getAuth, signOut } from "firebase/auth";
 
 export default function Navbar() {
+
+  const [isloggedIn, setisloggedIn] = useState(true);
+
+  const handleLogOut = () => {
+    const auth = getAuth();
+    signOut(auth).then(() => {
+      console.log("Sign-out successful.");
+      setisloggedIn(false)
+    }).catch((error) => {
+      console.log("An error happened.");
+    });
+  }
+
   return (
     <div>
       <nav className="navbar navbar-expand-lg navbar-dark navbar-container">
@@ -21,20 +35,20 @@ export default function Navbar() {
                 <Link className="nav-link mx-3" to="/records">Records</Link>
               </li>
 
-              <li className="nav-item">
+              <li className={`${isloggedIn? "d-none" : "nav-item"}`}>
                 <Link className="nav-link mx-3" to="/login">Login</Link>
               </li>
 
-              <li className="nav-item">
+              <li className={`${isloggedIn? "d-none" : "nav-item"}`}>
                 <Link className="auth-btn btn mx-3" to="/signup">Signup</Link>
               </li>
 
-              <li className="nav-item">
-                <Link className="nav-link mx-3" to="/login">Login</Link>
+              <li className={`${isloggedIn? "nav-item" : "d-none"}`}>
+                <Link className="nav-link mx-3" to="/profile">Profile</Link>
               </li>
-              
-              <li className="nav-item">
-                <Link className="auth-btn btn mx-3" to="/signup">Signup</Link>
+
+              <li className={`${isloggedIn? "nav-item" : "d-none"}`}>
+                <Link className="auth-btn btn mx-3" to="/" onClick={handleLogOut}>Logout</Link>
               </li>
 
             </ul>
