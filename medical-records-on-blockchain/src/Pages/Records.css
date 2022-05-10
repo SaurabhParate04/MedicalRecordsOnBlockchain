@@ -1,12 +1,9 @@
-.form-container{
-    max-width: 1000px;
-    max-height: 600px;
-    margin: auto;
-    text-align: center;
-}
-
 .input-box{
-    width: 100%;
+    background-color: #eee;
+	border: none;
+	padding: 12px 15px;
+	margin: 8px 0;
+	height: 40px;
 }
 
 .input-div{
@@ -14,13 +11,12 @@
 }
 
 .button{
-    font-size: 30px;
+    font-size: 25px;
     border-radius: 50%;
     width: 4%;
     color: white;
     background-color: #061551;
     border: 1px solid #061551;
-    margin-right: 60px;
 }
 
 .button:hover{
@@ -30,5 +26,20 @@
 }
 
 .button:active{
+    transform: scale(0.92);
+}
+
+.submit-btn{
+    color: white;
+    background-color: #061551;
+}
+
+.submit-btn:hover{
+    color: black;
+    background-color: transparent;
+    border: 1px solid #061551;
+}
+
+.submit-btn:active{
     transform: scale(0.92);
 }
