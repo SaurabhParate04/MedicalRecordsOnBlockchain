@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { getAuth, signOut } from "firebase/auth";
 
 export default function Navbar() {
+  let location = useLocation();
 
   const [isloggedIn, setisloggedIn] = useState(true);
 
@@ -28,15 +29,15 @@ export default function Navbar() {
             <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
 
               <li className="nav-item">
-                <Link className="nav-link mx-3 active" aria-current="page" to="/">Home</Link>
+                <Link className={`nav-link mx-3 ${location.pathname==="/" ?"active":""}`} aria-current="page" to="/">Home</Link>
               </li>
 
               <li className="nav-item">
-                <Link className="nav-link mx-3" to="/records">Records</Link>
+                <Link className={`nav-link mx-3 ${location.pathname==="/records" ?"active":""}`} to="/records">Records</Link>
               </li>
 
               <li className={`${isloggedIn? "d-none" : "nav-item"}`}>
-                <Link className="nav-link mx-3" to="/login">Login</Link>
+                <Link className={`nav-link mx-3 ${location.pathname==="/login" ?"active":""}`} to="/login">Login</Link>
               </li>
 
               <li className={`${isloggedIn? "d-none" : "nav-item"}`}>
@@ -44,7 +45,7 @@ export default function Navbar() {
               </li>
 
               <li className={`${isloggedIn? "nav-item" : "d-none"}`}>
-                <Link className="nav-link mx-3" to="/profile">Profile</Link>
+                <Link className={`nav-link mx-3 ${location.pathname==="/profile" ?"active":""}`} to="/profile">Profile</Link>
               </li>
 
               <li className={`${isloggedIn? "nav-item" : "d-none"}`}>
