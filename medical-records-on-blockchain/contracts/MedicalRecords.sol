@@ -7,6 +7,7 @@ contract MedicalRecords {
         address physician;
         string firstName;
         string lastName;
+        string physicianName;
         string date;
         string gender;
         uint age;
@@ -61,6 +62,11 @@ contract MedicalRecords {
         mapping (uint => Medicine) medicine;
     }
 
+    struct AllRecords {
+        uint recordNo;
+        mapping (uint => Record) allRecords;
+    }
+
     struct Record {
         BasicInfo generalInfo;
         uint majorIllnessCount;
@@ -74,16 +80,59 @@ contract MedicalRecords {
     }
 
     event RecordCreated(
+        address patient,
         string firstName,
-        string lastName,
-        string physician
+        address physician,
+        string physicianName,
+        string date
     );
 
-    mapping (address => Record) medicalRecords;
+    event BasicInfoCreated(
+        string gender,
+        string patientContact,
+        string bloodGroup
+    );
 
-    // function createRecord(address _patientAddress) public {
-    //     medicalRecords[_patientAddress].generalInfo.name
-    // }
+    event getAddress(
+        address physicianAddress
+    );
+
+    mapping (address => AllRecords) medicalRecords;
+
+    function createRecord(address _patientAddress, address _physicianAddress, string memory _firstName, string memory _lastName, string memory _physicianName, string memory _date) public {
+        
+        medicalRecords[_patientAddress].allRecords[0].generalInfo.patient = _patientAddress;
+        medicalRecords[_patientAddress].allRecords[0].generalInfo.physician = _physicianAddress;
+        medicalRecords[_patientAddress].allRecords[0].generalInfo.firstName = _firstName;
+        medicalRecords[_patientAddress].allRecords[0].generalInfo.lastName = _lastName;
+        medicalRecords[_patientAddress].allRecords[0].generalInfo.physicianName = _physicianName;
+        medicalRecords[_patientAddress].allRecords[0].generalInfo.date = _date;
+
+        medicalRecords[_patientAddress].allRecords[0].majorIllnessCount = 0;
+        medicalRecords[_patientAddress].allRecords[0].surgicalProcedureHistoryCount = 0;
+        medicalRecords[_patientAddress].allRecords[0].medicationsCount = 0;
+
+        emit RecordCreated(medicalRecords[_patientAddress].allRecords[0].generalInfo.patient, medicalRecords[_patientAddress].allRecords[0].generalInfo.firstName, medicalRecords[_patientAddress].allRecords[0].generalInfo.physician, medicalRecords[_patientAddress].allRecords[0].generalInfo.physicianName, medicalRecords[_patientAddress].allRecords[0].generalInfo.date);
+    }
+
+    function fillBasicInfo(address _patientAddress, string memory _gender, uint _age, uint _weight, string memory _patientContact, string memory _physicianContact, string memory _emergencyContactName, string memory _emergencyContactNumber, string memory _bloodGroup ) public {
+        
+        medicalRecords[_patientAddress].allRecords[0].generalInfo.gender = _gender;
+        medicalRecords[_patientAddress].allRecords[0].generalInfo.age = _age;
+        medicalRecords[_patientAddress].allRecords[0].generalInfo.weight = _weight;
+        medicalRecords[_patientAddress].allRecords[0].generalInfo.patientContact = _patientContact;
+        medicalRecords[_patientAddress].allRecords[0].generalInfo.physicianContact = _physicianContact;
+        medicalRecords[_patientAddress].allRecords[0].generalInfo.emergencyContactName = _emergencyContactName;
+        medicalRecords[_patientAddress].allRecords[0].generalInfo.emergencyContactNumber = _emergencyContactNumber;
+        medicalRecords[_patientAddress].allRecords[0].generalInfo.bloodGroup = _bloodGroup;
+
+        emit BasicInfoCreated(medicalRecords[_patientAddress].allRecords[0].generalInfo.gender, medicalRecords[_patientAddress].allRecords[0].generalInfo.patientContact, medicalRecords[_patientAddress].allRecords[0].generalInfo.bloodGroup);
+    }
+
+    function getPhysicianAddress(address _patientAddress, uint recordNo) public returns(address) {
+        emit getAddress(medicalRecords[_patientAddress].allRecords[recordNo].generalInfo.physician);
+        return medicalRecords[_patientAddress].allRecords[recordNo].generalInfo.physician;
+    }
 
     // function createCharity(string memory _name) public {
     //     charities[_name].name = _name;
