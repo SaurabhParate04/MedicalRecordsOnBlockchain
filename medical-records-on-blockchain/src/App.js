@@ -3,6 +3,8 @@ import './App.css';
 import Home from './Pages/Home';
 import Login from './Pages/Login';
 import Records from './Pages/Records';
+import Profile from './Pages/Profile';
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -29,6 +31,10 @@ function App() {
 
           <Route exact path="/signup">
             <Login/>
+          </Route>
+          
+          <Route exact path="/profile">
+            <Profile/>
           </Route>
           
         </Switch>
