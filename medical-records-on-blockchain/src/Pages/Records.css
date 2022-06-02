@@ -1,0 +1,45 @@
+.input-box{
+    background-color: #eee;
+	border: none;
+	padding: 12px 15px;
+	margin: 8px 0;
+	height: 40px;
+}
+
+.input-div{
+    margin: auto;
+}
+
+.button{
+    font-size: 25px;
+    border-radius: 50%;
+    width: 4%;
+    color: white;
+    background-color: #061551;
+    border: 1px solid #061551;
+}
+
+.button:hover{
+    color: black;
+    background-color: transparent;
+    border: 1px solid #061551;
+}
+
+.button:active{
+    transform: scale(0.92);
+}
+
+.submit-btn{
+    color: white;
+    background-color: #061551;
+}
+
+.submit-btn:hover{
+    color: black;
+    background-color: transparent;
+    border: 1px solid #061551;
+}
+
+.submit-btn:active{
+    transform: scale(0.92);
+}
